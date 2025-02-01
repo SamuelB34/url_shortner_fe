@@ -20,7 +20,7 @@ const serverApi = axios.create({
  *   .then(data => console.log(data))
  *   .catch(error => console.error(error));
  */
-export const createUrlShort = async (url: string): Promise<object> => {
+export const createUrlShort = async (url: string) => {
 	const response = await serverApi.post('/', { url })
 
 	return response.data

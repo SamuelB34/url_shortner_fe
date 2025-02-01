@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { WebModal } from 'src/shared/components/web-modal/WebModal'
 import Image from 'next/image'
 import { createUrlShort } from 'src/shared/services/urlService'
+import { WebToast } from 'src/shared/components/web-toast/WebToast'
 
 export default function Home() {
 	const [modalOpen, setModalOpen] = useState(false)
@@ -11,14 +12,18 @@ export default function Home() {
 	const [value, setValue] = useState('')
 	const [shortUrl, setShortUrl] = useState('')
 
+	const [error, setError] = useState(false)
+	const [errorMsg, setErrorMsg] = useState('')
+
 	const addUrl = async () => {
 		try {
-			const { data } = await createUrlShort(value)
-			setShortUrl(data.short_id)
+			const res = await createUrlShort(value)
+			setShortUrl(res.data.short_id)
 			setModalOpen(true)
 			setValue('')
-		} catch (e) {
-			console.log(e)
+		} catch (e: any) {
+			setErrorMsg(e.response.data.error || 'Server Error')
+			setError(true)
 		}
 	}
 
@@ -41,6 +46,10 @@ export default function Home() {
 					Short the link
 				</button>
 			</div>
+
+			{error && (
+				<WebToast type={'error'} msg={errorMsg} close={() => setError(false)} />
+			)}
 
 			{modalOpen && (
 				<WebModal
