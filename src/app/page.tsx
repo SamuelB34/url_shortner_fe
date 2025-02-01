@@ -29,22 +29,30 @@ export default function Home() {
 
 	return (
 		<div className={styles.page}>
-			<div className={styles.form}>
-				<input
-					className={styles.input}
-					type="text"
-					placeholder="Enter URL"
-					value={value}
-					onChange={(e) => setValue(e.target.value)}
-				/>
-				<button
-					className={styles.button}
-					onClick={() => {
-						addUrl()
-					}}
-				>
-					Short the link
-				</button>
+			<div className={styles.page__container}>
+				<span className={styles.title}>
+					<Image src={'/link.svg'} alt="Short URL" width="20" height="20" />
+					URL Shortener
+					<Image src={'/link.svg'} alt="Short URL" width="20" height="20" />
+				</span>
+
+				<div className={styles.form}>
+					<input
+						className={styles.input}
+						type="text"
+						placeholder="Enter URL"
+						value={value}
+						onChange={(e) => setValue(e.target.value)}
+					/>
+					<button
+						className={styles.button}
+						onClick={() => {
+							addUrl()
+						}}
+					>
+						Short the link
+					</button>
+				</div>
 			</div>
 
 			{error && (
