@@ -161,8 +161,48 @@ a.secondary {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+
+.form {
+  display: flex;
+  gap: 16px;
+
+  .input {
+    width: 180px;
+    height: 24px;
+    padding: 0 8px;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 0 8px;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #1a1a1a;
+  }
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+
+  span {
+    border-radius: 4px;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    padding: 8px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #1a1a1a;
+    cursor: pointer;
   }
 }
